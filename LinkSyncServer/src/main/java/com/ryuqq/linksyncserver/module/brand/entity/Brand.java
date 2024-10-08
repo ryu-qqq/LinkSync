@@ -2,12 +2,10 @@ package com.ryuqq.linksyncserver.module.brand.entity;
 
 import com.ryuqq.linksyncserver.module.generic.entity.BaseEntity;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Getter
+@Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Table(name = "BRAND")

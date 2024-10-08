@@ -1,4 +1,4 @@
-package com.ryuqq.linksyncserver.module.site;
+package com.ryuqq.linksyncserver.module.site.entity;
 
 import com.ryuqq.linksyncserver.module.generic.entity.BaseEntity;
 import jakarta.persistence.Column;

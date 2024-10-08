@@ -3,8 +3,6 @@ package com.ryuqq.linksyncserver.module.category.entity;
 import com.ryuqq.linksyncserver.module.category.enums.CategoryType;
 import com.ryuqq.linksyncserver.module.category.enums.TargetGroup;
 import com.ryuqq.linksyncserver.module.generic.entity.BaseEntity;
-import com.ryuqq.linksyncserver.module.generic.enums.Yn;
-import com.ryuqq.linksyncserver.module.site.LanguageCode;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

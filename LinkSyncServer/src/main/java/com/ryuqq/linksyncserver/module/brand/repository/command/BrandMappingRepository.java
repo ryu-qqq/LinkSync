@@ -1,4 +1,4 @@
-package com.ryuqq.linksyncserver.module.brand.repository;
+package com.ryuqq.linksyncserver.module.brand.repository.command;
 
 import com.ryuqq.linksyncserver.module.brand.entity.BrandMapping;
 import org.springframework.data.jpa.repository.JpaRepository;

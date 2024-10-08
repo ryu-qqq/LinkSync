@@ -1,0 +1,36 @@
+package com.ryuqq.linksyncserver.data;
+
+import org.jeasy.random.EasyRandom;
+import org.jeasy.random.EasyRandomParameters;
+import org.jeasy.random.randomizers.range.BigDecimalRangeRandomizer;
+import org.jeasy.random.randomizers.range.IntegerRangeRandomizer;
+
+import java.math.BigDecimal;
+
+import static org.jeasy.random.FieldPredicates.named;
+
+public class EasyRandomUtils {
+
+    private static final EasyRandom easyRandom;
+
+    static {
+        EasyRandomParameters parameters = new EasyRandomParameters()
+                .excludeField(named("id"))
+                .objectFactory(new RecordRandomizerRegistry())
+                .randomize(Long.class, new LongRangeRandomizer(1, 100000000))
+                .randomize(String.class, new StringRandomizer(10))
+                .randomize(BigDecimal.class, new BigDecimalRangeRandomizer(0.0, 1000000000.0))
+                .randomize(Integer.class, new IntegerRangeRandomizer(0, 100))
+                .collectionSizeRange(1, 2);
+
+        easyRandom = new EasyRandom(parameters);
+    }
+
+
+    public static EasyRandom getInstance() {
+        return easyRandom;
+    }
+
+
+
+}
