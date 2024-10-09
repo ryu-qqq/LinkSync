@@ -26,4 +26,9 @@ public class BrandQueryServiceImpl implements BrandQueryService{
                 .orElseThrow(() -> new BrandNotFoundException(brandName, languageCode));
     }
 
+    @Override
+    public boolean brandExists(String brandName, String languageCode) {
+        return brandQueryRepository.fetchBrandResponse(brandName, languageCode).isPresent();
+    }
+
 }

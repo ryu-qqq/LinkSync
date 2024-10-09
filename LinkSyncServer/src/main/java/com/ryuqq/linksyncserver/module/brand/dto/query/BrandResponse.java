@@ -11,13 +11,13 @@ public class BrandResponse {
 
     private long brandId;
     private String brandName;
-    private String LanguageCode;
+    private String languageCode;
 
     @QueryProjection
     public BrandResponse(long brandId, String brandName, String languageCode) {
         this.brandId = brandId;
         this.brandName = brandName;
-        this.LanguageCode = languageCode;
+        this.languageCode = languageCode;
     }
 
 }

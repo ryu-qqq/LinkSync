@@ -1,0 +1,13 @@
+= Enums Documentation
+
+== Common Module Enum
+=== YN Enum
+include::{snippets}/common-doc-controller-test/enums/custom-response-fields-yn.adoc[]
+
+
+== Category Module Enum
+=== Target Group
+include::{snippets}/common-doc-controller-test/enums/custom-response-fields-targetGroup.adoc[]
+
+=== Category Type
+include::{snippets}/common-doc-controller-test/enums/custom-response-fields-categoryType.adoc[]

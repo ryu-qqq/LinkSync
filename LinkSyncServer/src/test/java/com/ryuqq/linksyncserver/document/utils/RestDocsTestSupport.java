@@ -1,8 +1,6 @@
-package com.ryuqq.linksyncserver.document;
+package com.ryuqq.linksyncserver.document.utils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ryuqq.linksyncserver.document.utils.BaseControllerTest;
-import com.ryuqq.linksyncserver.document.utils.RestDocsConfig;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.TestInstance;
@@ -84,7 +82,6 @@ public class RestDocsTestSupport extends BaseControllerTest {
                         .withResponseDefaults(Preprocessors.prettyPrint()))
                 .alwaysDo(MockMvcResultHandlers.print())
                 .alwaysDo(restDocs)
-                .apply(springSecurity())
                 .addFilters(new CharacterEncodingFilter("UTF-8", true))
                 .build();
     }

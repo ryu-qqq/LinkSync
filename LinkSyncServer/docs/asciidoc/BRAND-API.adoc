@@ -1,0 +1,14 @@
+= BRAND API
+:toc:
+:toclevels: 3
+
+== COMMAND BRAND
+
+=== COMMAND Brand Request
+include::{snippets}/brand-controller-test/should-create-brand-successfully/http-request.adoc[]
+include::{snippets}/brand-controller-test/should-create-brand-successfully/request-body.adoc[]
+
+=== COMMAND Brand Response
+include::{snippets}/brand-controller-test/should-create-brand-successfully/http-response.adoc[]
+include::{snippets}/brand-controller-test/should-create-brand-successfully/response-body.adoc[]
+

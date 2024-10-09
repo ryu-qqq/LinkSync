@@ -34,22 +34,23 @@ public class GlobalExceptionHandler {
 
 
     private void loggingError(Exception e, String errorMsg){
-        String stackTrace = Arrays.stream(e.getStackTrace())
-                .limit(10)
-                .map(StackTraceElement::toString)
-                .collect(Collectors.joining("\n"));
-        String logMessage = errorMsg + "\n" + stackTrace;
-        log.error(ERROR_LOG_MSG_FORMAT, logMessage);
+        log.error(ERROR_LOG_MSG_FORMAT, errorMsg);
     }
-
 
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<?> handleValidationExceptions(MethodArgumentNotValidException e) {
-        String errorMsg = e.getBindingResult().getFieldErrors()
+        String fieldErrors = e.getBindingResult().getFieldErrors()
                 .stream()
                 .map(fieldError -> String.format("%s", fieldError.getDefaultMessage()))
                 .collect(Collectors.joining(" "));
+
+        String globalErrors = e.getBindingResult().getGlobalErrors()
+                .stream()
+                .map(objectError -> String.format("%s", objectError.getDefaultMessage()))
+                .collect(Collectors.joining(" "));
+
+        String errorMsg = (fieldErrors + " " + globalErrors).trim();
 
 
         String exceptionClassName = e.getClass().getSimpleName();

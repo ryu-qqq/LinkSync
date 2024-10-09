@@ -13,8 +13,8 @@ public class ValidatorHelper {
         ConstraintValidatorContext.ConstraintViolationBuilder violationBuilder = mock(ConstraintValidatorContext.ConstraintViolationBuilder.class);
         ConstraintValidatorContext.ConstraintViolationBuilder.NodeBuilderCustomizableContext nodeBuilder = mock(ConstraintValidatorContext.ConstraintViolationBuilder.NodeBuilderCustomizableContext.class);
 
-        when(context.buildConstraintViolationWithTemplate(anyString())).thenReturn(violationBuilder);
-        when(violationBuilder.addPropertyNode(anyString())).thenReturn(nodeBuilder);
+//        when(context.buildConstraintViolationWithTemplate(anyString())).thenReturn(violationBuilder);
+//        when(violationBuilder.addPropertyNode(anyString())).thenReturn(nodeBuilder);
         when(nodeBuilder.addConstraintViolation()).thenReturn(context);
 
         return context;

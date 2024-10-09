@@ -18,4 +18,5 @@ public class BrandMapper {
     public BrandResponse toResponse(Brand brand) {
         return new BrandResponse(brand.getId(), brand.getBrandName(), brand.getLanguageCode());
     }
+
 }

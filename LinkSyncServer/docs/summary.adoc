@@ -1,0 +1,31 @@
+[[overview-http-status-codes]]
+
+|===
+| Status Code | Description
+
+| `200 OK`
+| Success
+
+| `201 OK`
+| Refresh token reissued
+
+| `400 Bad Request`
+| Bad request
+
+| `401 Unauthorized`
+| Unauthorized
+
+| `403 Forbidden`
+| Forbidden
+
+| `404 Not Found`
+| Resource not found
+
+| `500 Internal Server Error`
+| Server error
+|===
+
+[[overview-error-response]]
+=== HTTP Error Response
+include::{snippets}/common-doc-controller-test/error-sample/http-response.adoc[]
+include::{snippets}/common-doc-controller-test/error-sample/response-fields.adoc[]

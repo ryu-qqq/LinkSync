@@ -1,11 +1,9 @@
 package com.ryuqq.linksyncserver.module.brand.repository.query;
 
-import com.querydsl.core.QueryFactory;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.ryuqq.linksyncserver.module.brand.dto.query.BrandResponse;
 import com.ryuqq.linksyncserver.module.brand.dto.query.QBrandResponse;
-import com.ryuqq.linksyncserver.module.brand.entity.QBrand;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 

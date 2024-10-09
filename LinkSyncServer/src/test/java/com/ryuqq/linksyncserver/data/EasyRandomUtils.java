@@ -6,6 +6,7 @@ import org.jeasy.random.randomizers.range.BigDecimalRangeRandomizer;
 import org.jeasy.random.randomizers.range.IntegerRangeRandomizer;
 
 import java.math.BigDecimal;
+import java.util.Map;
 
 import static org.jeasy.random.FieldPredicates.named;
 
@@ -32,5 +33,35 @@ public class EasyRandomUtils {
     }
 
 
+
+    public static EasyRandom getInstance(Map<String, Object> values) {
+        EasyRandomParameters parameters = new EasyRandomParameters()
+                .objectFactory(new RecordRandomizerRegistry())
+                .randomize(Long.class, new LongRangeRandomizer(1, 100000000))
+                .randomize(String.class, new StringRandomizer(10))
+                .collectionSizeRange(1, 2);
+
+        for(Map.Entry<String, Object> entry : values.entrySet()){
+            parameters.randomize(field -> field.getName().equals(entry.getKey()), entry::getValue);
+        }
+
+        return new EasyRandom(parameters);
+    }
+
+
+    public static EasyRandom getInstanceWithNoId(Map<String, Object> values) {
+        EasyRandomParameters parameters = new EasyRandomParameters()
+                .excludeField(named("id"))
+                .objectFactory(new RecordRandomizerRegistry())
+                .randomize(Long.class, new LongRangeRandomizer(1, 100000000))
+                .randomize(String.class, new StringRandomizer(10))
+                .collectionSizeRange(1, 2);
+
+        for(Map.Entry<String, Object> entry : values.entrySet()){
+            parameters.randomize(field -> field.getName().equals(entry.getKey()), entry::getValue);
+        }
+
+        return new EasyRandom(parameters);
+    }
 
 }

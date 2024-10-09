@@ -6,5 +6,6 @@ public interface BrandQueryService {
 
     BrandResponse getBrand(long brandId);
     BrandResponse getBrand(String brandName, String languageCode);
+    boolean brandExists(String brandName, String languageCode);
 
 }

@@ -9,7 +9,7 @@ import java.lang.annotation.*;
 
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = LanguageCodeValidator.class)
+@Constraint(validatedBy = BrandValidator.class)
 @Documented
 public @interface BrandValidate {
 

@@ -2,6 +2,7 @@ package com.ryuqq.linksyncserver.document;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.ryuqq.linksyncserver.document.utils.CustomResponseFieldsSnippet;
+import com.ryuqq.linksyncserver.document.utils.RestDocsTestSupport;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
@@ -24,7 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(
         value = {CommonDocController.class}
 )
-public class CommonDocControllerTest extends RestDocsTestSupport{
+public class CommonDocControllerTest extends RestDocsTestSupport {
 
     @Test
     public void enums() throws Exception {
