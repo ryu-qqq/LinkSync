@@ -1,12 +1,17 @@
 package com.ryuqq.linksyncserver.data.brand;
 
+import com.ryuqq.linksyncserver.data.CustomSliceUtils;
 import com.ryuqq.linksyncserver.data.EasyRandomUtils;
 import com.ryuqq.linksyncserver.module.brand.dto.command.CreateBrandRequest;
 import com.ryuqq.linksyncserver.module.brand.dto.query.BrandResponse;
 import com.ryuqq.linksyncserver.module.brand.entity.Brand;
+import com.ryuqq.linksyncserver.module.generic.CustomSlice;
+import com.ryuqq.linksyncserver.module.generic.LastDomainIdProvider;
 import org.jeasy.random.EasyRandom;
+import org.springframework.data.domain.Pageable;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class BrandModuleHelper {
@@ -54,5 +59,10 @@ public class BrandModuleHelper {
         EasyRandom instance = EasyRandomUtils.getInstance(stringObjectMap);
         return instance.nextObject(BrandResponse.class);
     }
+
+    public static CustomSlice<BrandResponse> toCustomBrandResponseSlice(List<BrandResponse> brandResponses, Pageable pageable, long totalElements) {
+        return CustomSliceUtils.buildCustomSlice(brandResponses, pageable, totalElements);
+    }
+
 
 }

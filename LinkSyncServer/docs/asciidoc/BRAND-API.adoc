@@ -12,3 +12,17 @@ include::{snippets}/brand-controller-test/should-create-brand-successfully/reque
 include::{snippets}/brand-controller-test/should-create-brand-successfully/http-response.adoc[]
 include::{snippets}/brand-controller-test/should-create-brand-successfully/response-body.adoc[]
 
+
+
+== QUERY BRANDS
+
+=== QUERY Brand Request
+include::{snippets}/get-brands/http-request.adoc[]
+include::{snippets}/get-brands/curl-request.adoc[]
+
+=== QUERY Brand Response
+include::{snippets}/get-brands/http-response.adoc[]
+include::{snippets}/get-brands/response-body.adoc[]
+include::{snippets}/get-brands/response-fields-beneath-data.adoc[]
+
+
