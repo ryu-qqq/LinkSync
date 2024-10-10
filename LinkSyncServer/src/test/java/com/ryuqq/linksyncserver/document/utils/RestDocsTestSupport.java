@@ -73,6 +73,23 @@ public class RestDocsTestSupport extends BaseControllerTest {
         );
     }
 
+    protected List<FieldDescriptor> customPageableFields() {
+        return List.of(
+                fieldWithPath("content").type(JsonFieldType.ARRAY).description("List of items in the current page"),
+                fieldWithPath("totalElements").type(JsonFieldType.NUMBER).description("Total number of items"),
+                fieldWithPath("numberOfElements").type(JsonFieldType.NUMBER).description("Number of items in the current page"),
+                fieldWithPath("lastDomainId").type(JsonFieldType.NUMBER).description("ID of the last domain item"),
+                fieldWithPath("size").type(JsonFieldType.NUMBER).description("Number of items per page"),
+                fieldWithPath("first").type(JsonFieldType.BOOLEAN).description("Indicator if the current page is the first page"),
+                fieldWithPath("last").type(JsonFieldType.BOOLEAN).description("Indicator if the current page is the last page"),
+                fieldWithPath("empty").type(JsonFieldType.BOOLEAN).description("Is this page empty"),
+                fieldWithPath("sort").type(JsonFieldType.OBJECT).description("Sorting details"),
+                fieldWithPath("sort.empty").type(JsonFieldType.BOOLEAN).description("Sort empty status"),
+                fieldWithPath("sort.unsorted").type(JsonFieldType.BOOLEAN).description("Sort unsorted status"),
+                fieldWithPath("sort.sorted").type(JsonFieldType.BOOLEAN).description("Sort sorted status")
+        );
+    }
+
     @BeforeEach
     void setUp(final WebApplicationContext context, final RestDocumentationContextProvider provider) {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(context)

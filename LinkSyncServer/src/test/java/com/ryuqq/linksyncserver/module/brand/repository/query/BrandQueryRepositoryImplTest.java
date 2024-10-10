@@ -4,14 +4,17 @@ import com.ryuqq.linksyncserver.data.brand.BrandModuleHelper;
 import com.ryuqq.linksyncserver.document.utils.BaseQueryRepositoryTest;
 import com.ryuqq.linksyncserver.module.brand.dto.query.BrandResponse;
 import com.ryuqq.linksyncserver.module.brand.entity.Brand;
+import com.ryuqq.linksyncserver.module.brand.filter.BrandFilter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
+import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class BrandQueryRepositoryImplTest extends BaseQueryRepositoryTest {
 
@@ -66,6 +69,51 @@ class BrandQueryRepositoryImplTest extends BaseQueryRepositoryTest {
     void shouldReturnEmptyWhenBrandNotFoundByNameAndLanguageCode() {
         Optional<BrandResponse> result = brandQueryRepository.fetchBrandResponse("NonExistentBrand", "xx");
         assertTrue(result.isEmpty());
+    }
+
+
+    @Test
+    void shouldFetchBrandResponsesWithPagination() {
+        BrandFilter brandFilter = new BrandFilter(List.of(brand.getBrandName()), List.of(brand.getLanguageCode()));
+        Pageable pageable = PageRequest.of(0, 10);
+
+        List<BrandResponse> result = brandQueryRepository.fetchBrandResponses(brandFilter, pageable);
+
+        assertFalse(result.isEmpty());
+        assertEquals(1, result.size());
+        assertEquals(brand.getId(), result.getFirst().getBrandId());
+        assertEquals(brand.getBrandName(), result.getFirst().getBrandName());
+        assertEquals(brand.getLanguageCode(), result.getFirst().getLanguageCode());
+    }
+
+
+    @Test
+    void shouldReturnEmptyBrandResponsesWhenNoMatches() {
+        BrandFilter brandFilter = new BrandFilter(List.of("NonExistentBrand"), List.of("xx"));
+        Pageable pageable = PageRequest.of(0, 10);
+
+        List<BrandResponse> result = brandQueryRepository.fetchBrandResponses(brandFilter, pageable);
+
+        assertTrue(result.isEmpty());
+    }
+
+
+    @Test
+    void shouldReturnBrandCount() {
+        BrandFilter brandFilter = new BrandFilter(List.of(brand.getBrandName()), List.of(brand.getLanguageCode()));
+
+        long count = brandQueryRepository.fetchBrandCountQuery(brandFilter).fetchOne();
+
+        assertEquals(1, count);
+    }
+
+    @Test
+    void shouldReturnZeroBrandCountWhenNoMatches() {
+        BrandFilter brandFilter = new BrandFilter(List.of("NonExistentBrand"), List.of("xx"));
+
+        long count = brandQueryRepository.fetchBrandCountQuery(brandFilter).fetchOne();
+
+        assertEquals(0, count);
     }
 
 }
